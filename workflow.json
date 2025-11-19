@@ -1,0 +1,57 @@
+{
+    "nodes": [
+        {
+            "id": "start-1",
+            "type": "start",
+            "data": {}
+        },
+        {
+            "id": "print-1",
+            "type": "print",
+            "data": {
+                "message": "Hello from Zeus! Processing step 1."
+            }
+        },
+        {
+            "id": "print-2",
+            "type": "print",
+            "data": {
+                "message": "Parallel Step 2A"
+            }
+        },
+        {
+            "id": "print-3",
+            "type": "print",
+            "data": {
+                "message": "Parallel Step 2B"
+            }
+        },
+        {
+            "id": "end-1",
+            "type": "end",
+            "data": {}
+        }
+    ],
+    "edges": [
+        {
+            "source": "start-1",
+            "target": "print-1"
+        },
+        {
+            "source": "print-1",
+            "target": "print-2"
+        },
+        {
+            "source": "print-1",
+            "target": "print-3"
+        },
+        {
+            "source": "print-2",
+            "target": "end-1"
+        },
+        {
+            "source": "print-3",
+            "target": "end-1"
+        }
+    ]
+}
