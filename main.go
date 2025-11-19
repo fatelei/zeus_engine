@@ -20,7 +20,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	defer dslFile.Close()
+	defer func() { _ = dslFile.Close() }()
 
 	byteValue, _ := io.ReadAll(dslFile)
 

@@ -56,7 +56,6 @@ type Aggregator struct {
 	name   string
 	value  interface{}
 	reduce func(a, b interface{}) interface{}
-	mu     sync.Mutex
 }
 
 func NewPregelEngine(graph *Graph, pool *VariablePool, workers int) *PregelEngine {
@@ -184,9 +183,6 @@ func (e *PregelEngine) computeNode(ctx context.Context, nodeID string) error {
 			for k, v := range valMap {
 				inputs[k] = v
 			}
-		} else {
-			// Fallback for non-map messages (e.g. initial nil message)
-			// We don't need to store nil values
 		}
 	}
 	
